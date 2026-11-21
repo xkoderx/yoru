@@ -38,8 +38,8 @@ require("ui")
 --- ░▀▀▀░▀░▀░▀░▀░▀▀░░▀░▀░▀▀▀░▀▀▀
 
 --- Enable for lower memory consumption
-collectgarbage("setpause", 110)
-collectgarbage("setstepmul", 1000)
+-- Lua 5.5 removed setpause/setstepmul (awesome-git uses Lua 5.5);
+-- these two lines killed rc.lua. The 5s "collect" timer below stays.
 gears.timer({
 	timeout = 5,
 	autostart = true,

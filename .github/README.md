@@ -669,3 +669,25 @@ With heartfelt thanks, 💗
   <a href="https://github.com/rxyhn/yoru/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=rxyhn/yoru"/>
   </a>
+
+<!-- FORK FIXES -->
+
+## 🛠️ Correcciones de este fork (awesome-git / Lua 5.5)
+
+Probadas en Arch Linux con awesome-git 4.3 (Lua 5.5.1). Con la configuración
+original, Awesome no arrancaba y caía al respaldo de `/etc/xdg/awesome/rc.lua`.
+
+| Archivo | Arreglo |
+|---|---|
+| `config/awesome/modules/bling/layout/init.lua` | El `for` asignaba a su propia variable (`p = p:gsub(...)`) y Lua 5.5 la trata como constante: `attempt to assign to const variable 'p'`. Se usa una variable local nueva. **Ojo:** `bling` es un submódulo de [BlingCorp/bling](https://github.com/BlingCorp/bling), así que este cambio **no** vive en este repo: después de `git submodule update --init`, edita esa línea a mano o copia el archivo corregido del `yoru-fix.zip`. |
+| `config/awesome/rc.lua` | `collectgarbage("setpause")` y `("setstepmul")` ya no existen en Lua 5.5 y mataban `rc.lua` al arrancar. Se quitaron; el timer de `collectgarbage("collect")` cada 5 s se queda. |
+| `config/awesome/modules/lockscreen/lib/liblua_pam.so` | El `.so` incluido venía compilado para Lua 5.4 (`version mismatch: app. needs 504.0, Lua core provides 505.0`). Recompilado para Lua 5.5; la fuente está en `config/awesome/modules/lockscreen/lib/liblua_pam.c` y se compila con `gcc -shared -fPIC -I/usr/include -o liblua_pam.so liblua_pam.c -llua -lpam`. |
+| `config/awesome/helpers/run.lua` | `easy_async_with_shell` se llamaba sin callback y Awesome tronaba en `awful/spawn.lua:459` (`attempt to call a nil value (upvalue 'callback')`) en cada arranque. Se añadió un callback vacío. |
+| `config/awesome/signal/battery.lua` | Las llamadas a UPower ahora van con `pcall` y se revisa que el dispositivo no sea `nil`: en una PC sin batería el widget ya no tumba toda la configuración (relacionado con los issues #142 y #166). |
+| `config/awesome/configuration/picom.conf` | Opciones obsoletas corregidas (`crop-shadow-to-monitor`, regla `_NET_WM_WINDOW_TYPE` sin `:a`, se quitó `glx-no-stencil`). |
+
+Requisito: `playerctl` tiene que estar instalado, la configuración lo exige en
+`signal/playerctl.lua` (`sudo pacman -S playerctl`).
+
+Después de copiar los archivos, reinicia Awesome con `Mod+Ctrl+r` o cierra
+sesión y vuelve a entrar.

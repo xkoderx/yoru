@@ -14,7 +14,13 @@ function _run.run_once_pgrep(cmd)
 	if firstspace then
 		findme = cmd:sub(0, firstspace - 1)
 	end
-	awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
+	-- `easy_async_with_shell` exige un callback: sin él, al terminar el
+	-- comando Awesome truena en awful/spawn.lua:459 con
+	-- "attempt to call a nil value (upvalue 'callback')". Esto salía en
+	-- cada arranque del log (autostart llama a run_once_pgrep para mpd
+	-- y mpDris2). El callback vacío no cambia el comportamiento: el
+	-- shell ya arranca la app si pgrep no la encuentra.
+	awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd), function() end)
 end
 
 function _run.run_once_ps(findme, cmd)
