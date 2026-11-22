@@ -153,7 +153,7 @@ systemctl --user start mpd.service
 > Clone this repository
 
 ```sh
-git clone --depth 1 --recurse-submodules https://github.com/rxyhn/yoru.git
+git clone --depth 1 --recurse-submodules https://github.com/xkoderx/yoru.git
 cd yoru && git submodule update --remote --merge
 ```
 
