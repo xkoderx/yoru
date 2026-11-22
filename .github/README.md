@@ -691,3 +691,9 @@ Requisito: `playerctl` tiene que estar instalado, la configuración lo exige en
 
 Después de copiar los archivos, reinicia Awesome con `Mod+Ctrl+r` o cierra
 sesión y vuelve a entrar.
+
+## 🎨 Fondo y paleta (nov 2026)
+
+- Fondo: `config/awesome/theme/assets/wallpaper.jpg` — arte estilo GTA VI (Lucía y Jason al atardecer), subido de 1220x864 a 2440x1728 con remuestreo Lanczos + enfoque suave para que no se vea pixelado a 1080p. `theme/theme.lua` apunta a ese archivo.
+- Paleta: los colores de `theme/theme.lua` se sacaron del fondo — fondos ciruela oscuro (`#241828`, `#2e2033`), acento rosa empolvado (`#d394a7`), amarillo durazno (`#ecbda5`), magenta orquídea y verde salvia de las palmeras. Los paneles, la barra y los widgets toman estos valores, así que el cambio es solo ese archivo.
+- Para volver al fondo anterior (`wave.png`), cambia la línea del wallpaper en `theme/theme.lua` y listo.

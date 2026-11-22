@@ -28,51 +28,54 @@ theme.icon_font = "Material Icons "
 --- ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 
 --- Special
-theme.white = "#edeff0"
-theme.darker_black = "#060809"
-theme.black = "#0c0e0f"
-theme.lighter_black = "#121415"
-theme.one_bg = "#161819"
-theme.one_bg2 = "#1f2122"
-theme.one_bg3 = "#27292a"
-theme.grey = "#343637"
-theme.grey_fg = "#3e4041"
-theme.grey_fg2 = "#484a4b"
-theme.light_grey = "#505253"
+--- Paleta ciruela / rosa / durazno sacada del fondo theme/assets/wallpaper.jpg (nov 2026).
+--- Los fondos oscuros son ciruela (#241828...), el acento es rosa empolvado (#d394a7)
+--- y el amarillo es durazno (#ecbda5). Los widgets usan estos mismos valores.
+theme.white = "#f3e9ee"
+theme.darker_black = "#1d121f"
+theme.black = "#241828"
+theme.lighter_black = "#2e2033"
+theme.one_bg = "#352639"
+theme.one_bg2 = "#40303f"
+theme.one_bg3 = "#4c3a52"
+theme.grey = "#5a4a5e"
+theme.grey_fg = "#6b5a6e"
+theme.grey_fg2 = "#7d6b7d"
+theme.light_grey = "#8f7d8f"
 
 theme.transparent = "#00000000"
 
 --- Black
-theme.color0 = "#232526"
-theme.color8 = "#2c2e2f"
+theme.color0 = "#2e2033"
+theme.color8 = "#4c3a52"
 
 --- Red
-theme.color1 = "#df5b61"
-theme.color9 = "#e8646a"
+theme.color1 = "#cf6b7d"
+theme.color9 = "#dd8296"
 
 --- Green
-theme.color2 = "#78b892"
-theme.color10 = "#81c19b"
+theme.color2 = "#8fae7d"
+theme.color10 = "#a2c08f"
 
 --- Yellow
-theme.color3 = "#de8f78"
-theme.color11 = "#e79881"
+theme.color3 = "#ecbda5"
+theme.color11 = "#f4cdb2"
 
 --- Blue
-theme.color4 = "#6791c9"
-theme.color12 = "#709ad2"
+theme.color4 = "#8d7fc0"
+theme.color12 = "#9d8fd0"
 
 --- Magenta
-theme.color5 = "#bc83e3"
-theme.color13 = "#c58cec"
+theme.color5 = "#c98bb0"
+theme.color13 = "#d89cc0"
 
 --- Cyan
-theme.color6 = "#67afc1"
-theme.color14 = "#70b8ca"
+theme.color6 = "#7fb0a4"
+theme.color14 = "#93c2b6"
 
 --- White
-theme.color7 = "#e4e6e7"
-theme.color15 = "#f2f4f5"
+theme.color7 = "#e9dbe2"
+theme.color15 = "#f6eef2"
 
 --- Background Colors
 theme.bg_normal = theme.black
@@ -101,7 +104,7 @@ function theme.random_accent_color()
 	return accents[i]
 end
 
-theme.accent = theme.color4
+theme.accent = "#d394a7"
 
 --- UI events
 theme.leave_event = transparent
@@ -110,7 +113,7 @@ theme.press_event = "#ffffff" .. "15"
 theme.release_event = "#ffffff" .. "10"
 
 --- Widgets
-theme.widget_bg = "#1b1d1e"
+theme.widget_bg = "#2e2033"
 
 --- Titlebars
 theme.titlebar_enabled = true
@@ -144,7 +147,7 @@ theme.titlebar_maximized_button_normal_inactive_hover = icon_dir .. "maximized_f
 theme.titlebar_maximized_button_focus_inactive_hover = icon_dir .. "maximized_focus_hover.svg"
 
 --- Wibar
-theme.wibar_bg = "#101213"
+theme.wibar_bg = "#241828"
 theme.wibar_height = dpi(40)
 
 --- Music
@@ -157,7 +160,7 @@ theme.music_accent = theme.lighter_black
 --- ░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀
 
 --- Wallpapers
-theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/wave.png")
+theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/wallpaper.jpg")
 --- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/yoru-dots.png")
 --- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/mountain.jpg")
 --- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/rocks.jpg")
