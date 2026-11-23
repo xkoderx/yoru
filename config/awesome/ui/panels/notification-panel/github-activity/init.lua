@@ -28,15 +28,15 @@ local function generate_action_string(event)
 
 	if event.type == "PullRequestEvent" then
 		action_string = event.payload.action .. " a pull request in"
-		link = event.pr_url
+		link = event.payload.pull_request and event.payload.pull_request.html_url or link
 		icon = "git-pull-request.svg"
 	elseif event.type == "IssuesEvent" then
 		action_string = event.payload.action .. " an issue in"
-		link = event.issue_url
+		link = event.payload.issue and event.payload.issue.html_url or link
 		icon = "alert-circle.svg"
 	elseif event.type == "IssueCommentEvent" then
-		action_string = event.payload.action == "created" and "commented in issue" or event.action .. " a comment in"
-		link = event.issue_url
+		action_string = event.payload.action == "created" and "commented in issue" or event.payload.action .. " a comment in"
+		link = event.payload.issue and event.payload.issue.html_url or link
 		icon = "message-square.svg"
 	elseif event.type == "WatchEvent" then
 		action_string = "starred"
